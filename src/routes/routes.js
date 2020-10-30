@@ -2,6 +2,7 @@ import Register from '../components/pages/Register';
 import Login from '../components/pages/Login';
 import Home from '../components/pages/Home';
 import Report from '../components/pages/Report';
+import Result from '../components/pages/Result';
 
 // Este es un arreglo donde irán todas las rutas de nuestra App ;)
 const ROUTES = [
@@ -31,6 +32,13 @@ const ROUTES = [
 		key: 'REPORT',
 		exact: true,
 		component: Report,
+		auth: false,
+	},
+	{
+		path: '/result', // could be an array or an string
+		key: 'RESULT',
+		exact: true,
+		component: Result,
 		auth: false,
 	},
 ];
