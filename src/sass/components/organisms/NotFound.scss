@@ -1,0 +1,25 @@
+@import '../../common/Variables.scss';
+
+.notFound {
+	height: calc(100vh - 90px);
+	padding: 80px 30px 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+
+	&__image {
+		width: 200px;
+	}
+
+	&__text {
+		padding: 10px 0;
+		font-weight: 500;
+		text-align: center;
+
+		&-anchor {
+			color: rgba(0, 0, 0, 0.685);
+			text-decoration: underline;
+		}
+	}
+}
