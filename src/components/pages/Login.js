@@ -1,11 +1,13 @@
 import React from 'react';
+import FormLogin from '../organisms/FormLogin';
+import '../../sass/components/pages/Login.scss';
 
 const Login = () => {
-  return (
-    <div>
-      <h1>Login</h1>
-    </div>
-  );
+	return (
+		<div className='login'>
+			<FormLogin />
+		</div>
+	);
 };
 
 export default Login;
