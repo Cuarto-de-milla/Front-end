@@ -1,0 +1,9 @@
+@import '../../common/Variables.scss';
+
+.register {
+  height: calc(100vh - 90px);
+  padding: 40px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

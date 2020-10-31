@@ -1,9 +1,11 @@
 import React from 'react';
+import FormRegister from '../organisms/FormRegister';
+import '../../sass/components/pages/Register.scss';
 
 const Register = () => {
 	return (
-		<div>
-			<h1>Register</h1>
+		<div className='register'>
+			<FormRegister />
 		</div>
 	);
 };
