@@ -36,8 +36,6 @@ const Layout = (props) => {
 		);
 	};
 
-	console.log(flag);
-
 	return (
 		<>
 			<header className='header'>
