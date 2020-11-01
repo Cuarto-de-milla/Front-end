@@ -1,0 +1,267 @@
+@import '../../common/Variables.scss';
+
+.home {
+	height: calc(100vh - 90px);
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width: 1px;
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		width: 1px;
+		background: transparent;
+	}
+
+	&__head {
+		padding: 30px 30px 50px;
+		background-color: $primary-color;
+		color: $light-color;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		&-text {
+			padding-bottom: 20px;
+			font-weight: 400;
+
+			@media (min-width: 600px) {
+				width: 450px;
+			}
+		}
+
+		&-button {
+			border: 1px solid black;
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 5px;
+
+			@media (min-width: 500px) {
+				width: 450px;
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+
+	&__filter {
+		padding: 10px 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& .list {
+			list-style: none;
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 5px;
+
+			@media (min-width: 700px) {
+				margin-top: -30px;
+				grid-template-columns: repeat(3, minmax(150px, 300px));
+				gap: 30px;
+			}
+
+			@media (min-width: 1000px) {
+				gap: 50px;
+			}
+
+			@media (min-width: 1200px) {
+				gap: 120px;
+			}
+
+			@media (min-width: 1300px) {
+				gap: 160px;
+			}
+
+			&__item {
+				padding: 2px 10px;
+				height: 40px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-radius: 2px;
+				border: 1px solid $primary-color;
+				background-color: white;
+
+				&-input {
+					border: none;
+					width: 90%;
+					height: 100%;
+					outline: none;
+				}
+			}
+		}
+	}
+
+	&__content {
+		padding: 10px 30px;
+		display: grid;
+		grid-template-columns: 1fr;
+
+		@media (min-width: 1000px) {
+			grid-template-columns: 60% 40%;
+			gap: 10px;
+		}
+
+		&-prices {
+			margin: 0 0 20px;
+			height: 500px;
+			overflow: hidden;
+
+			@media (min-width: 1000px) {
+				height: 355px;
+			}
+
+			& .avgPrices {
+				margin: 0 0 10px;
+
+				&__list {
+					list-style: none;
+					display: grid;
+					grid-template-columns: 1fr;
+					gap: 10px;
+
+					@media (min-width: 450px) {
+						grid-template-columns: 1fr 1fr;
+						gap: 15px;
+					}
+
+					@media (min-width: 700px) {
+						grid-template-columns: 1fr 1fr 1fr;
+					}
+
+					&-item {
+						border: 1px solid $primary-color;
+						padding: 0 5px;
+						border-radius: 1px;
+
+						& .head {
+							width: 100%;
+							height: 30px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							padding: 0 5px;
+							font-size: 14px;
+							border-bottom: 1px solid $primary-color;
+							& .title {
+								font-weight: 500;
+								letter-spacing: 2px;
+							}
+
+							& .subtitle {
+								font-weight: 300;
+								letter-spacing: 1px;
+							}
+						}
+
+						& .footer {
+							width: 100%;
+							height: 30px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							padding: 0 5px;
+							font-size: 14px;
+							border-top: 1px solid $primary-color;
+
+							& .title {
+								font-weight: 500;
+								letter-spacing: 2px;
+							}
+
+							& .subtitle {
+								font-weight: 300;
+								letter-spacing: 1px;
+							}
+						}
+					}
+				}
+			}
+
+			& .listPrices {
+				height: 80%;
+				margin: 0 0 10px;
+				padding-top: 5px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				overflow: hidden;
+
+				&__list {
+					list-style: none;
+					overflow-y: scroll;
+					&::-webkit-scrollbar {
+						width: 2px;
+						background: rgba(0, 0, 0, 0.1);
+						box-shadow: 0 0 1px black;
+					}
+					&::-webkit-scrollbar-thumb {
+						width: 2px;
+						background: $primary-color;
+						border-radius: 5px;
+					}
+
+					&-item {
+						padding-top: 5px;
+						padding-bottom: 5px;
+						margin-bottom: 10px;
+						border: 1px solid rgba(0, 0, 0, 0.089);
+						border-radius: 2px;
+						box-shadow: 0 2px 2px rgba(0, 0, 0, 0.089);
+
+						& .title {
+							text-align: center;
+							font-weight: 500;
+							margin-bottom: 5px;
+						}
+
+						& .info {
+							margin: 0 auto;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+
+							&__card {
+								width: 70px;
+								height: 55px;
+								margin: 0 7px;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								justify-content: space-around;
+
+								@media (min-width: 400px) {
+									margin: 0 15px;
+								}
+
+								@media (min-width: 700px) {
+									margin: 0 30px;
+								}
+
+								&-text {
+									font-size: 13px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&-map {
+			height: 355px;
+			border-radius: 2px;
+			overflow: hidden;
+		}
+	}
+}
+
+.btn {
+	width: 100%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
