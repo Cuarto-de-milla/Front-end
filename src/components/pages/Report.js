@@ -1,5 +1,8 @@
 import React from 'react';
-import { AiFillFire } from 'react-icons/ai';
+import {
+	AiFillFire,
+	AiOutlineUpload,
+} from 'react-icons/ai';
 import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Map from '../organisms/Map';
@@ -82,16 +85,27 @@ const Report = (props) => {
 							<h4 className='formulary__details-title'>
 								Detalles
 							</h4>
-							<input
-								className='formulary__details-file'
-								type='file'
-								placeholder='Agregar evidencia'
-							/>
-							<input
-								className='formulary__details-price'
-								type='text'
-								placeholder='Precio a reportar'
-							/>
+							<div className='formulary__details-info'>
+								<div className='file'>
+									<p className='file__text'>Agregar evidencia</p>
+									<AiOutlineUpload size='17' />
+									<input className='file__input' type='file' />
+								</div>
+								<input
+									className='file__price'
+									type='text'
+									placeholder='Precio a reportar'
+								/>
+								<MdAttachMoney
+									size='20'
+									style={{
+										position: 'absolute',
+										color: 'rgba(0, 0, 0, 0.4)',
+										left: 'calc(100% - 38px)',
+										top: '60px',
+									}}
+								/>
+							</div>
 							<input
 								className='formulary__details-button'
 								type='submit'
