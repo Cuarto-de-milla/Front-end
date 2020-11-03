@@ -7,21 +7,25 @@ import '../../sass/components/templates/Layout.scss';
 
 const Layout = (props) => {
 	const { children, img, imgText } = props;
-	const [flag, setFlag] = useState(false);
+	const [modal, setModal] = useState(false);
 
 	const putContent = () => {
 		if (window.screen.width < 600) {
-			const icon = flag ? (
+			const icon = modal ? (
 				<AiOutlineClose
 					size='40'
 					color='#fffeea'
-					onClick={() => (flag ? setFlag(false) : setFlag(true))}
+					onClick={() =>
+						modal ? setModal(false) : setModal(true)
+					}
 				/>
 			) : (
 				<GiHamburgerMenu
 					size='40'
 					color='#fffeea'
-					onClick={() => (flag ? setFlag(false) : setFlag(true))}
+					onClick={() =>
+						modal ? setModal(false) : setModal(true)
+					}
 				/>
 			);
 			return icon;
@@ -29,9 +33,15 @@ const Layout = (props) => {
 
 		return (
 			<nav className='header__nav'>
-				<NavLink to='/report'>CREAR REPORTE</NavLink>
-				<NavLink to='/login'>LOGIN</NavLink>
-				<NavLink to='/register'>REGISTRARME</NavLink>
+				<NavLink activeClassName='selected' to='/report'>
+					CREAR REPORTE
+				</NavLink>
+				<NavLink activeClassName='selected' to='/login'>
+					LOGIN
+				</NavLink>
+				<NavLink activeClassName='selected' to='/register'>
+					REGISTRARME
+				</NavLink>
 			</nav>
 		);
 	};
@@ -39,7 +49,7 @@ const Layout = (props) => {
 	return (
 		<>
 			<header className='header'>
-				<Link to='/' className='header__anchor'>
+				<Link to='/home' className='header__anchor'>
 					<img
 						className='header__logo'
 						src={
@@ -51,7 +61,9 @@ const Layout = (props) => {
 					/>
 				</Link>
 				{putContent()}
-				{flag ? <MobileMain /> : null}
+				<MobileMain isOpen={modal}>
+					<h1>hola</h1>
+				</MobileMain>
 			</header>
 			{children}
 		</>

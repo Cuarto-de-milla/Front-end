@@ -21,7 +21,7 @@ const ROUTES = [
 		auth: false,
 	},
 	{
-		path: ['/', '/home'], // could be an array or an string
+		path: ['/home','/'], // could be an array or an string
 		key: 'HOME',
 		exact: true,
 		component: Home,

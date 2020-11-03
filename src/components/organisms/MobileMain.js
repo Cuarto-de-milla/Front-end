@@ -1,16 +1,30 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import '../../sass/components/organisms/MobileMain.scss';
 
-const MobileMain = () => {
-	return (
+const MobileMain = (props) => {
+	if (!props.isOpen) {
+		return null;
+	}
+	return ReactDOM.createPortal(
 		<div className='mobile'>
 			<ul className='mobile__list'>
-				<NavLink to='/report'>CREAR REPORTE</NavLink>
-				<NavLink to='/login'>LOGIN</NavLink>
-				<NavLink to='/register'>REGISTER</NavLink>
+				<NavLink to='/home' activeClassName='selected'>
+					HOME
+				</NavLink>
+				<NavLink to='/report' activeClassName='selected'>
+					CREAR REPORTE
+				</NavLink>
+				<NavLink to='/login' activeClassName='selected'>
+					LOGIN
+				</NavLink>
+				<NavLink to='/register' activeClassName='selected'>
+					REGISTER
+				</NavLink>
 			</ul>
-		</div>
+		</div>,
+		document.getElementById('modal')
 	);
 };
 
