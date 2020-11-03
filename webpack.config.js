@@ -40,7 +40,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Gass-Price',
+			title: 'Cuarto de Milla',
 			template: path.resolve(__dirname, './src/index.html'),
 		}),
 	],
