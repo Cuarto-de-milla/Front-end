@@ -1,22 +1,27 @@
 @import '../../common/Variables.scss';
 
 .mobile {
-  background-color: $primary-color;
-  position: absolute;
-  padding: 50px 30px;
-  top: 90px;
-  left: 0;
-  width: 240px;
-  height: 300px;
-  border-bottom-right-radius: 10px;
-  transition: width 2s;
+	background-color: $primary-color;
+	position: absolute;
+	padding: 50px 30px;
+	top: 90px;
+	left: 0;
+	width: 240px;
+	height: 300px;
+	border-bottom-right-radius: 10px;
+	transition: width 2s;
 
-  &__list {
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
+	&__list {
+		height: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+}
 
+.selected {
+	color: $light-color;
+	text-shadow: 0 0 3px $light-color;
+  text-decoration: underline;
 }

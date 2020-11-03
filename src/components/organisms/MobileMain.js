@@ -10,10 +10,18 @@ const MobileMain = (props) => {
 	return ReactDOM.createPortal(
 		<div className='mobile'>
 			<ul className='mobile__list'>
-				<NavLink to='/'>HOME</NavLink>
-				<NavLink to='/report'>CREAR REPORTE</NavLink>
-				<NavLink to='/login'>LOGIN</NavLink>
-				<NavLink to='/register'>REGISTER</NavLink>
+				<NavLink to='/home' activeClassName='selected'>
+					HOME
+				</NavLink>
+				<NavLink to='/report' activeClassName='selected'>
+					CREAR REPORTE
+				</NavLink>
+				<NavLink to='/login' activeClassName='selected'>
+					LOGIN
+				</NavLink>
+				<NavLink to='/register' activeClassName='selected'>
+					REGISTER
+				</NavLink>
 			</ul>
 		</div>,
 		document.getElementById('modal')

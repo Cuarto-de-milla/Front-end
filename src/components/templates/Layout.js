@@ -33,9 +33,15 @@ const Layout = (props) => {
 
 		return (
 			<nav className='header__nav'>
-				<NavLink to='/report'>CREAR REPORTE</NavLink>
-				<NavLink to='/login'>LOGIN</NavLink>
-				<NavLink to='/register'>REGISTRARME</NavLink>
+				<NavLink activeClassName='selected' to='/report'>
+					CREAR REPORTE
+				</NavLink>
+				<NavLink activeClassName='selected' to='/login'>
+					LOGIN
+				</NavLink>
+				<NavLink activeClassName='selected' to='/register'>
+					REGISTRARME
+				</NavLink>
 			</nav>
 		);
 	};
@@ -43,7 +49,7 @@ const Layout = (props) => {
 	return (
 		<>
 			<header className='header'>
-				<Link to='/' className='header__anchor'>
+				<Link to='/home' className='header__anchor'>
 					<img
 						className='header__logo'
 						src={

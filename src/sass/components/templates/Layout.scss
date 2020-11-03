@@ -29,3 +29,9 @@
     color: $light-color;
 	}
 }
+
+.selected {
+	color: $light-color;
+	text-shadow: 0 0 3px $light-color;
+  text-decoration: underline;
+}
