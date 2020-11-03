@@ -1,5 +1,8 @@
 import React from 'react';
-import { AiFillFire } from 'react-icons/ai';
+import {
+	AiFillFire,
+	AiFillCaretRight,
+} from 'react-icons/ai';
 import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 
@@ -34,6 +37,10 @@ const ListOfCard = () => {
 						<p className='info__card-text'>
 							{item.price ? item.price : 'Price'}
 						</p>
+					</div>
+					<div className='info__report'>
+						<AiFillCaretRight size='20' color='#db0a40'/>
+						<p className='info__report-text'>Reportar</p>
 					</div>
 				</div>
 			</li>
