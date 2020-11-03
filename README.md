@@ -25,12 +25,24 @@ The web application have five differents screens:
 
 This project is create with next technologies.
 
-<div style="display: flex; justify-content: center;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png" style="height: 25%;">
-    <img src="https://cdn.worldvectorlogo.com/logos/sass-1.svg" style="height: 25%;">
-    <img src="https://cdn.worldvectorlogo.com/logos/babel-10.svg" style="height: 25%;">
-    <img src="https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png" style="height: 25%;">
-</div>
+<table>
+    <tbody>
+        <tr>
+            <td align="center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png" widt="200px">
+            </td>
+            <td align="center">
+                <img src="https://cdn.worldvectorlogo.com/logos/sass-1.svg" widt="200px">
+            </td>
+            <td align="center">
+                <img src="https://cdn.worldvectorlogo.com/logos/babel-10.svg" widt="200px">
+            </td>
+            <td align="center">
+                <img src="https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png" widt="200px">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### API's integrations
 
