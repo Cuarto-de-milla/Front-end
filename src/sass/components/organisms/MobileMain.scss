@@ -9,6 +9,7 @@
   width: 240px;
   height: 300px;
   border-bottom-right-radius: 10px;
+  transition: width 2s;
 
   &__list {
     height: 90%;

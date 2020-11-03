@@ -7,21 +7,25 @@ import '../../sass/components/templates/Layout.scss';
 
 const Layout = (props) => {
 	const { children, img, imgText } = props;
-	const [flag, setFlag] = useState(false);
+	const [modal, setModal] = useState(false);
 
 	const putContent = () => {
 		if (window.screen.width < 600) {
-			const icon = flag ? (
+			const icon = modal ? (
 				<AiOutlineClose
 					size='40'
 					color='#fffeea'
-					onClick={() => (flag ? setFlag(false) : setFlag(true))}
+					onClick={() =>
+						modal ? setModal(false) : setModal(true)
+					}
 				/>
 			) : (
 				<GiHamburgerMenu
 					size='40'
 					color='#fffeea'
-					onClick={() => (flag ? setFlag(false) : setFlag(true))}
+					onClick={() =>
+						modal ? setModal(false) : setModal(true)
+					}
 				/>
 			);
 			return icon;
@@ -51,7 +55,9 @@ const Layout = (props) => {
 					/>
 				</Link>
 				{putContent()}
-				{flag ? <MobileMain /> : null}
+				<MobileMain isOpen={modal}>
+					<h1>hola</h1>
+				</MobileMain>
 			</header>
 			{children}
 		</>

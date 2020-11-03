@@ -92,9 +92,9 @@ const Home = () => {
 				<div className='home__content-map'>
 					<Map
 						containerElement={
-							<div style={{ height: '100%' }}></div>
+							<div className='div1' style={{ height: '100%' }}></div>
 						}
-						mapElement={<div style={{ height: '100%' }}></div>}
+						mapElement={<div className='div2' style={{ height: '100%' }}></div>}
 						loadingElement={<p>Cargando...</p>}
 						googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDmbtqh28Uxv1zM38FINetvopdOEHlLIXA`}
 					/>
