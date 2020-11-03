@@ -218,6 +218,7 @@
 						}
 
 						& .info {
+							position: relative;
 							margin: 0 auto;
 							display: flex;
 							align-items: center;
@@ -242,6 +243,37 @@
 
 								&-text {
 									font-size: 13px;
+								}
+							}
+
+							&__report {
+								position: absolute;
+								top: 0;
+								right: 5px;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								justify-content: space-around;
+								border-radius: 50%;
+								cursor: pointer;
+								color: #e87461;
+								font-size: 8px;
+
+								@media (min-width: 450px) {
+									right: 10px;
+								}
+
+								@media (min-width: 550px) {
+									right: 20px;
+								}
+
+								&-text {
+									display: none;
+
+									@media (min-width: 450px) {
+										display: block;
+										font-size: 10px;
+									}
 								}
 							}
 						}
