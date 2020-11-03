@@ -52,6 +52,4 @@ This project is create with next technologies.
 
 # Conclusions
 
-# Contributors 
-
-# 
+# Contributors
