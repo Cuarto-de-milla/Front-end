@@ -6,9 +6,10 @@ import {
 import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Map from '../organisms/Map';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import '../../sass/components/pages/Report.scss';
 
+console.warn = () => {};
 const Report = (props) => {
 	const { name, location, type, price } = props;
 	const [picture, setPicture] = useState(null);
@@ -84,7 +85,7 @@ const Report = (props) => {
 					<div className='card'>
 						<li className='card__item'>
 							<h4 className='card__item-title'>
-								Fuel station name
+								{name ? name : 'Fuel station name'}
 							</h4>
 							<div className='card__item-info'>
 								<div className='info__card'>
