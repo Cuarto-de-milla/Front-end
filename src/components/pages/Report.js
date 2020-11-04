@@ -6,7 +6,7 @@ import {
 import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Map from '../organisms/Map';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import '../../sass/components/pages/Report.scss';
 
 console.warn = () => {};
