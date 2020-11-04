@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	AiFillFire,
 	AiOutlineUpload,
@@ -6,10 +6,42 @@ import {
 import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Map from '../organisms/Map';
+import firebase from 'firebase';
 import '../../sass/components/pages/Report.scss';
 
 const Report = (props) => {
 	const { name, location, type, price } = props;
+	const [picture, setPicture] = useState(null);
+	const [uploadValue, setUploadValue] = useState(0);
+
+	const handleUpload = (event) => {
+		const file = event.target.files[0];
+		const storageRef = firebase
+			.storage()
+			.ref(`/Fotos/${file.name}`);
+		const task = storageRef.put(file);
+
+		task.on(
+			'state_changed',
+			(snapshot) => {
+				let percentage =
+					(snapshot.bytesTransferred / snapshot.totalBytes) *
+					100;
+				setUploadValue(percentage);
+			},
+			(error) => {
+				console.log(error.message);
+			},
+			() => {
+				storageRef.getDownloadURL().then((url) => {
+					setPicture(url);
+				});
+			}
+		);
+	};
+
+	console.log(picture, uploadValue);
+
 	return (
 		<div className='report'>
 			<section className='report__filter'>
@@ -89,7 +121,11 @@ const Report = (props) => {
 								<div className='file'>
 									<p className='file__text'>Agregar evidencia</p>
 									<AiOutlineUpload size='17' />
-									<input className='file__input' type='file' />
+									<input
+										className='file__input'
+										type='file'
+										onChange={handleUpload}
+									/>
 								</div>
 								<input
 									className='file__price'
