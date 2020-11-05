@@ -6,6 +6,7 @@ import Card from '../organisms/ListOfCard';
 import ListOfAvgPrices from '../organisms/ListOfAvgPrices';
 import getStations from '../../graphql/queries/getStations'
 import Map from '../organisms/Map';
+import { Link } from 'react-router-dom';
 import '../../sass/components/pages/Home.scss';
 
 const Home = () => {
@@ -27,26 +28,30 @@ const Home = () => {
 				</h4>
 
 				<div className='home__head-button'>
-					<button
-						className='btn'
-						style={{
-							backgroundColor: '#001830',
-							color: '#fffeea',
-							border: '1px solid #fffeea',
-						}}
-					>
-						¡Registrarme!
-					</button>
-					<button
-						className='btn'
-						style={{
-							backgroundColor: '#fffeea',
-							color: '#001830',
-							border: '1px solid #001830',
-						}}
-					>
-						Ver mas
-					</button>
+					<Link to='/register'>
+						<button
+							className='btn'
+							style={{
+								backgroundColor: '#001830',
+								color: '#fffeea',
+								border: '1px solid #fffeea',
+							}}
+						>
+							¡Registrarme!
+						</button>
+					</Link>
+					<Link to='/'>
+						<button
+							className='btn'
+							style={{
+								backgroundColor: '#fffeea',
+								color: '#001830',
+								border: '1px solid #001830',
+							}}
+						>
+							Ver mas
+						</button>
+					</Link>
 				</div>
 			</header>
 
