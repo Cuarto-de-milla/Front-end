@@ -41,7 +41,6 @@ const Report = (props) => {
 		);
 	};
 
-	console.log(picture, uploadValue);
 
 	return (
 		<div className='report'>

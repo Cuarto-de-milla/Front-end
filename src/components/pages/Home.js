@@ -5,6 +5,7 @@ import ListOfAvgPrices from '../organisms/ListOfAvgPrices';
 import Map from '../organisms/Map';
 import { Link } from 'react-router-dom';
 import '../../sass/components/pages/Home.scss';
+import Loading from '../molecules/Loading';
 
 const Home = () => {
 	return (
@@ -92,10 +93,20 @@ const Home = () => {
 				<div className='home__content-map'>
 					<Map
 						containerElement={
-							<div className='div1' style={{ height: '100%' }}></div>
+							<div
+								className='div1'
+								style={{ height: '100%' }}
+							></div>
 						}
-						mapElement={<div className='div2' style={{ height: '100%' }}></div>}
-						loadingElement={<p>Cargando...</p>}
+						mapElement={
+							<div
+								className='div2'
+								style={{
+									height: '100%',
+								}}
+							></div>
+						}
+						loadingElement={<Loading />}
 						googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDmbtqh28Uxv1zM38FINetvopdOEHlLIXA`}
 					/>
 				</div>
