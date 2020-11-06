@@ -55,7 +55,10 @@ const ListOfCard = () => {
 						{item.node.price ? item.node.price : 'Price'}
 					</p>
 				</div>
-				<div className='info__report'>
+				<div
+					className='info__report'
+					onClick={() => console.log(item.node)}
+				>
 					<AiFillCaretRight size='20' color='#db0a40' />
 					<p className='info__report-text'>Reportar</p>
 				</div>
