@@ -28,7 +28,7 @@ const ROUTES = [
 		auth: false,
 	},
 	{
-		path: '/report', // could be an array or an string
+		path: '/report/:reportId', // could be an array or an string
 		key: 'REPORT',
 		exact: true,
 		component: Report,

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {
 	AiFillFire,
 	AiFillCaretRight,
@@ -45,13 +47,13 @@ const ListOfCard = ({ data, loading }) => {
 						{item.node.price ? item.node.price : 'Price'}
 					</p>
 				</div>
-				<div
+				<Link
 					className='info__report'
-					onClick={() => console.log(item.node)}
+					to={`/report/${item.node.id}`}
 				>
 					<AiFillCaretRight size='20' color='#db0a40' />
 					<p className='info__report-text'>Reportar</p>
-				</div>
+				</Link>
 			</div>
 		</li>
 	));

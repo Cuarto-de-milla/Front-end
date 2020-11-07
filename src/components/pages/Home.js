@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import debounce from 'lodash/debounce';
 import { useQuery } from '@apollo/client';
 
 import { AiFillFire } from 'react-icons/ai';

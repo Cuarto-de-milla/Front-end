@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { from, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom'
+
 import {
 	AiFillFire,
 	AiOutlineUpload,
@@ -7,11 +10,19 @@ import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Map from '../organisms/Map';
 import firebase from 'firebase';
-import '../../sass/components/pages/Report.scss';
 
-console.warn = () => {};
-const Report = (props) => {
-	const { name, location, type, price } = props;
+import getStations from '../../graphql/queries/getStations';
+import '../../sass/components/pages/Report.scss';
+import Loading from '../molecules/Loading';
+
+const Report = () => {
+	const { reportId } = useParams();
+	const { loading, error, data, refetch } = useQuery(getStations, {
+    	variables: {
+			id: reportId
+		}
+	});
+
 	const [picture, setPicture] = useState(null);
 	const [uploadValue, setUploadValue] = useState(0);
 
@@ -41,69 +52,37 @@ const Report = (props) => {
 		);
 	};
 
+	if (loading) return <Loading/>
+
+	const { station, gasType, price } = data.nodePrice.edges[0].node;
 
 	return (
 		<div className='report'>
-			<section className='report__filter'>
-				<ul className='list'>
-					<li className='list__item'>
-						<input
-							type='text'
-							placeholder='Estado'
-							className='list__item-input'
-						/>
-						<AiFillFire
-							style={{ color: '#e87461', fontSize: '20px' }}
-						/>
-					</li>
-					<li className='list__item'>
-						<input
-							type='text'
-							placeholder='Ciudad'
-							className='list__item-input'
-						/>
-						<AiFillFire
-							style={{ color: '#e87461', fontSize: '20px' }}
-						/>
-					</li>
-					<li className='list__item'>
-						<input
-							type='text'
-							placeholder='Tipo de combustible'
-							className='list__item-input'
-						/>
-						<AiFillFire
-							style={{ color: '#e87461', fontSize: '20px' }}
-						/>
-					</li>
-				</ul>
-			</section>
-
 			<section className='report__content'>
 				<div className='report__content-form'>
 					<div className='card'>
 						<li className='card__item'>
 							<h4 className='card__item-title'>
-								{name ? name : 'Fuel station name'}
+								{station.name}
 							</h4>
 							<div className='card__item-info'>
 								<div className='info__card'>
 									<VscLocation
 										style={{ fontSize: '25px', color: '#db0a40' }}
 									/>
-									<p className='info__card-text'>Location</p>
+									<p className='info__card-text'>{station.town}</p>
 								</div>
 								<div className='info__card'>
 									<AiFillFire
 										style={{ fontSize: '25px', color: '#ffd400' }}
 									/>
-									<p className='info__card-text'>Fuel Type</p>
+									<p className='info__card-text'>{gasType}</p>
 								</div>
 								<div className='info__card'>
 									<MdAttachMoney
 										style={{ fontSize: '25px', color: '#6e8894' }}
 									/>
-									<p className='info__card-text'>Price</p>
+									<p className='info__card-text'>{price}</p>
 								</div>
 							</div>
 						</li>
@@ -156,6 +135,8 @@ const Report = (props) => {
 				</div>
 				<div className='report__content-map'>
 					<Map
+						data={data}
+						loading={loading}
 						containerElement={
 							<div style={{ height: '100%' }}></div>
 						}
