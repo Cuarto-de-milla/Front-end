@@ -1,7 +1,7 @@
 @import '../../common/Variables.scss';
 
 .home {
-	height: calc(100vh - 90px);
+	min-height: calc(100vh - 90px);
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
 		width: 1px;
@@ -110,7 +110,8 @@
 			overflow: hidden;
 
 			@media (min-width: 1000px) {
-				height: 355px;
+				margin: 0;
+				height: calc(100vh - 322px);
 			}
 
 			& .avgPrices {
@@ -181,8 +182,6 @@
 			}
 
 			& .listPrices {
-				height: 80%;
-				margin: 0 0 10px;
 				padding-top: 5px;
 				display: flex;
 				flex-direction: column;
@@ -287,6 +286,9 @@
 			height: 355px;
 			border-radius: 2px;
 			overflow: hidden;
+			@media(min-width: 1000px) {
+				height: calc(100vh - 322px);
+			}
 		}
 	}
 }
