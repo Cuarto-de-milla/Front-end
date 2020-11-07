@@ -1,13 +1,25 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+
 import { AiFillFire } from 'react-icons/ai';
-import ListOfCard from '../organisms/ListOfCard';
+import Card from '../organisms/ListOfCard';
 import ListOfAvgPrices from '../organisms/ListOfAvgPrices';
+import getStations from '../../graphql/queries/getStations'
 import Map from '../organisms/Map';
 import { Link } from 'react-router-dom';
 import '../../sass/components/pages/Home.scss';
 import Loading from '../molecules/Loading';
 
 const Home = () => {
+	const { loading, error, data, refetch } = useQuery(getStations, {
+    variables: { first: 10 }
+	});
+	
+	if (loading) return <span>We are fetching the data</span>
+	if (error) return <span>We got an error</span>
+
+	console.log(data)
+
 	return (
 		<div className='home'>
 			<header className='home__head'>
@@ -87,7 +99,15 @@ const Home = () => {
 						</ul>
 					</div>
 					<div className='listPrices'>
-						<ul className='listPrices__list'>{ListOfCard()}</ul>
+						<ul className='listPrices__list'>
+							{data.nodePrice.edges.map(price => <Card
+							name={price.node.station.name}
+							location={price.node.station.town} key={price.node.id}
+							price={price.node.price}
+							type={price.node.gasType}
+							/>)
+						}
+						</ul>
 					</div>
 				</div>
 				<div className='home__content-map'>
