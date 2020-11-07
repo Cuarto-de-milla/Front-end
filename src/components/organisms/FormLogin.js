@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { useMutation } from "@apollo/client";
-import { useHistory } from 'react-router-dom';
 
 import login from '../../graphql/mutations/login'
 import '../../sass/components/organisms/FormLogin.scss';
 
 const FormLogin = () => {
-	const history = useHistory();
 	const [form, setForm] = useState({});
 	const [
 		loginMutation
 	  ] = useMutation(login, {
 		  onCompleted(data) {
 			localStorage.setItem('token', data.tokenAuth.token);
-			history.push('/');
+			window.location.replace('/')
 		  },
 		  onError(error) {
 			alert(error.message)

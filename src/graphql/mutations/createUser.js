@@ -1,6 +1,6 @@
 const { gql } = require("@apollo/client");
 
-export defaul gql `
+export default gql `
 mutation {
     createUser(
           profileData: {

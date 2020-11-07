@@ -9,6 +9,11 @@ const Layout = (props) => {
 	const { children, img, imgText } = props;
 	const [modal, setModal] = useState(false);
 
+	const handleLogout = () => {
+		localStorage.removeItem('token');
+		window.location.replace('/login')
+	}
+
 	const putContent = () => {
 		if (window.screen.width < 600) {
 			const icon = modal ? (
@@ -36,12 +41,15 @@ const Layout = (props) => {
 				<NavLink activeClassName='selected' to='/report'>
 					CREAR REPORTE
 				</NavLink>
-				<NavLink activeClassName='selected' to='/login'>
+				{ !localStorage.getItem('token') && <NavLink activeClassName='selected' to='/login'>
 					LOGIN
-				</NavLink>
-				<NavLink activeClassName='selected' to='/register'>
+				</NavLink>}
+				{ !!localStorage.getItem('token') && <a href="#" activeClassName='selected' onClick={handleLogout}>
+					LOGOUT
+				</a>}
+				{!localStorage.getItem('token') &&<NavLink activeClassName='selected' to='/register'>
 					REGISTRARME
-				</NavLink>
+				</NavLink>}
 			</nav>
 		);
 	};

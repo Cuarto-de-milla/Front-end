@@ -45,7 +45,7 @@ const Home = () => {
 				</h4>
 
 				<div className='home__head-button'>
-					<Link to='/register'>
+					{!localStorage.getItem('token') && <Link to='/register'>
 						<button
 							className='btn'
 							style={{
@@ -56,7 +56,7 @@ const Home = () => {
 						>
 							¡Registrarme!
 						</button>
-					</Link>
+					</Link>}
 					<Link to='/'>
 						<button
 							className='btn'
