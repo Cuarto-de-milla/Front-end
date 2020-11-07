@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from "@apollo/client";
+import { useHistory } from 'react-router-dom';
+
+import login from '../../graphql/mutations/login'
 import '../../sass/components/organisms/FormLogin.scss';
 
 const FormLogin = () => {
+	const history = useHistory();
+	const [form, setForm] = useState({});
+	const [
+		loginMutation
+	  ] = useMutation(login, {
+		  onCompleted(data) {
+			localStorage.setItem('token', data.tokenAuth.token);
+			history.push('/');
+		  },
+		  onError(error) {
+			alert(error.message)
+		  }
+	  });
+
+	const handleChange = ({ target }) => setForm({
+		...form,
+		[target.name]: target.value
+	})
+
+	const handleLogIn = () => {
+		if (!form.username) return alert('You need to provide an username')
+		if (!form.password) return alert('You need to provide a passwors')
+		loginMutation({
+			variables: form,
+			
+		})
+
+	}
+
+
 	return (
 		<div className='form'>
 			<img
@@ -10,14 +44,16 @@ const FormLogin = () => {
 				className='form__image'
 			/>
 			<div className='form__entries'>
-				<label htmlFor='email' className='form__entries-label'>
-					* email
+				<label htmlFor='username' className='form__entries-label'>
+					* username
 				</label>
 				<input
 					className='form__entries-input'
-					type='email'
-					name='email'
-					placeholder='cuartodemilla@email.com'
+					type='text'
+					value={form.username}
+					name='username'
+					onChange={handleChange}
+					placeholder='username'
 				/>
 				<label
 					htmlFor='password'
@@ -28,6 +64,8 @@ const FormLogin = () => {
 				<input
 					className='form__entries-input'
 					type='password'
+					onChange={handleChange}
+					value={form.password}
 					name='password'
 					placeholder='min 8 char'
 				/>
@@ -37,6 +75,7 @@ const FormLogin = () => {
 						backgroundColor: '#001830',
 						color: '#fffeea',
 					}}
+					onClick={handleLogIn}
 				>
 					Login
 				</button>
