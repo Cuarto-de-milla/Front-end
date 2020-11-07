@@ -7,22 +7,10 @@ import {
 } from 'react-google-maps';
 import mapStyle from '../../assets/mapStyle';
 
-import { useQuery } from '@apollo/client';
-import getStations from '../../graphql/queries/getStations';
 import Loading from '../molecules/Loading';
 
-const Map = (props) => {
-	const { zoom, lat, lng } = props;
-
-	const { loading, error, data, refetch } = useQuery(
-		getStations,
-		{
-			variables: { first: 100 },
-		}
-	);
-
+const Map = ({ zoom, lat, lng, data , loading}) => {
 	if (loading) return <Loading />;
-	if (error) return <span>We got an error</span>;
 
 	const options = {
 		styles: mapStyle,

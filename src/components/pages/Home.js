@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import debounce from 'lodash/debounce';
 import { useQuery } from '@apollo/client';
 
 import { AiFillFire } from 'react-icons/ai';
-import Card from '../organisms/ListOfCard';
+import CardList from '../organisms/CardList';
 import ListOfAvgPrices from '../organisms/ListOfAvgPrices';
 import getStations from '../../graphql/queries/getStations'
 import Map from '../organisms/Map';
@@ -11,14 +12,30 @@ import '../../sass/components/pages/Home.scss';
 import Loading from '../molecules/Loading';
 
 const Home = () => {
-	const { loading, error, data, refetch } = useQuery(getStations, {
-    variables: { first: 10 }
-	});
-	
-	if (loading) return <span>We are fetching the data</span>
-	if (error) return <span>We got an error</span>
+	const initialFilters = {
+		gastype: 'DIESEL',
+		station: '',
+		city: '',
+		first: 15
+	}
 
-	console.log(data)
+	const [filters, setFilters] = useState(initialFilters)
+
+	const { loading, error, data, refetch } = useQuery(getStations, {
+    	variables: initialFilters
+	});
+
+	const handleFiltersChange = ({ target }) => {
+		const newFilters = {
+			...filters,
+			[target.name]: target.value
+		}
+		setFilters(newFilters);
+		refetch(newFilters);
+	}
+
+
+	if (error) return <span>We got an error</span>
 
 	return (
 		<div className='home'>
@@ -61,8 +78,11 @@ const Home = () => {
 					<li className='list__item'>
 						<input
 							type='text'
-							placeholder='Estado'
+							placeholder='Estacion'
 							className='list__item-input'
+							name='station'
+							value={filters.station}
+							onChange={handleFiltersChange}
 						/>
 						<AiFillFire
 							style={{ color: '#e87461', fontSize: '20px' }}
@@ -73,6 +93,9 @@ const Home = () => {
 							type='text'
 							placeholder='Ciudad'
 							className='list__item-input'
+							name='city'
+							value={filters.city}
+							onChange={handleFiltersChange}
 						/>
 						<AiFillFire
 							style={{ color: '#e87461', fontSize: '20px' }}
@@ -83,6 +106,9 @@ const Home = () => {
 							type='text'
 							placeholder='Tipo de combustible'
 							className='list__item-input'
+							name='gastype'
+							value={filters.gastype}
+							onChange={handleFiltersChange}
 						/>
 						<AiFillFire
 							style={{ color: '#e87461', fontSize: '20px' }}
@@ -100,18 +126,18 @@ const Home = () => {
 					</div>
 					<div className='listPrices'>
 						<ul className='listPrices__list'>
-							{data.nodePrice.edges.map(price => <Card
-							name={price.node.station.name}
-							location={price.node.station.town} key={price.node.id}
-							price={price.node.price}
-							type={price.node.gasType}
-							/>)
+							{data && <CardList
+							loading={loading}
+							data={data}
+							/>
 						}
 						</ul>
 					</div>
 				</div>
 				<div className='home__content-map'>
 					<Map
+						data={data}
+						loading={loading}
 						containerElement={
 							<div
 								className='div1'

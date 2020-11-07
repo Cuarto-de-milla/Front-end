@@ -7,19 +7,9 @@ import { VscLocation } from 'react-icons/vsc';
 import { MdAttachMoney } from 'react-icons/md';
 import Loading from '../molecules/Loading';
 
-import { useQuery } from '@apollo/client';
-import getStations from '../../graphql/queries/getStations';
-
-const ListOfCard = () => {
-	const { loading, error, data, refetch } = useQuery(
-		getStations,
-		{
-			variables: { first: 100 },
-		}
-	);
+const ListOfCard = ({ data, loading }) => {
 
 	if (loading) return <Loading />;
-	if (error) return <span>We got an error</span>;
 
 	return data.nodePrice.edges.map((item, index) => (
 		<li className='listPrices__list-item' key={index}>
