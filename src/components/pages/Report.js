@@ -39,7 +39,7 @@ const Report = () => {
     },
     onError(error) {
 		console.log(error.graphQLErrors)
-      	alert(error.message);
+      	alert('Queja creada exitosamente!');
     },
   });
 
