@@ -2,11 +2,11 @@ import { gql } from "@apollo/client";
 
 export default gql`
 mutation createComplaint(
-        description: String!,
-        linkEvidence: String!,
-        offeredPrice: Int!,
-        typeComplaint: String!,
-        priceId: Int!
+        $description: String!,
+        $linkEvidence: String!,
+        $offeredPrice: Float!,
+        $typeComplaint: String!,
+        $priceId: Int!
     ) {
     createComplaint(
         description: $description,
