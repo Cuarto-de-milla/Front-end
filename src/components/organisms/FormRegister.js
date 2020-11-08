@@ -1,7 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../sass/components/organisms/FormRegister.scss';
+import Swal from 'sweetalert2';
+import { Redirect, Link } from 'react-router-dom';
 
 const FormRegister = () => {
+	const [form, setForm] = useState({});
+
+	const handleRegister = () => {
+		if (!form.email)
+			return Swal.fire({
+				title:
+					'<h4 style="color : #ffffff">You need to provide an email</h4>',
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
+
+		if (!form.username)
+			return Swal.fire({
+				title:
+					'<h4 style="color : #ffffff">You need to provide an username</h4>',
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
+
+		if (!form.password)
+			return Swal.fire({
+				title:
+					'<h4 style="color : #ffffff">You need to provide an password</h4>',
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
+
+		return Swal.fire({
+			title: '<h4 style="color : #ffffff">User Registed</h4>',
+			background: '#001830',
+			timer: 20000,
+			timerProgressBar: true,
+			width: '320px',
+			footer:
+				'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+			padding: '5% 10px 20px',
+		});
+	};
+
+	const handleChange = ({ target }) => {
+		setForm({
+			...form,
+			[target.name]: target.value,
+		});
+	};
+
+
 	return (
 		<div className='form'>
 			<img
@@ -17,6 +81,8 @@ const FormRegister = () => {
 					className='form__entries-input'
 					type='email'
 					name='email'
+					value={form.email}
+					onChange={handleChange}
 					placeholder='cuartodemilla@email.com'
 				/>
 				<label
@@ -29,6 +95,8 @@ const FormRegister = () => {
 					className='form__entries-input'
 					type='username'
 					name='username'
+					onChange={handleChange}
+					value={form.username}
 					placeholder='cuartodemilla'
 				/>
 				<label
@@ -41,6 +109,8 @@ const FormRegister = () => {
 					className='form__entries-input'
 					type='password'
 					name='password'
+					onChange={handleChange}
+					value={form.password}
 					placeholder='min 8 char'
 				/>
 				<button
@@ -49,8 +119,9 @@ const FormRegister = () => {
 						backgroundColor: '#001830',
 						color: '#fffeea',
 					}}
+					onClick={handleRegister}
 				>
-					¡Registrarme!
+					<Link to='/login'>¡Registrarme!</Link>;
 				</button>
 			</div>
 		</div>
@@ -58,4 +129,3 @@ const FormRegister = () => {
 };
 
 export default FormRegister;
-<h1>Register</h1>;
