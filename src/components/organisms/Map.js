@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	GoogleMap,
 	withGoogleMap,
 	withScriptjs,
 	Marker,
+	InfoWindow,
 } from 'react-google-maps';
 import mapStyle from '../../assets/mapStyle';
-
 import Loading from '../molecules/Loading';
+import '../../sass/components/organisms/Map.scss';
 
-const Map = ({ zoom, lat, lng, data , loading}) => {
+const Map = ({ zoom, lat, lng, data, loading }) => {
+	const [flag, setFlag] = useState(null);
 	if (loading) return <Loading />;
 
 	const options = {
@@ -38,8 +40,42 @@ const Map = ({ zoom, lat, lng, data , loading}) => {
 							? marker.node.station.longitude
 							: -103.3042,
 					}}
+					onClick={() => {
+						setFlag(marker);
+					}}
 				/>
 			))}
+			{flag ? (
+				<InfoWindow
+					position={{
+						lat: flag.node.station.latitude,
+						lng: flag.node.station.longitude,
+					}}
+					onCloseClick={() => {
+						setFlag(null);
+					}}
+				>
+					<div className='detail'>
+						<h4 className='detail__title'>Detalle</h4>
+						<h6 className='detail__name'>
+							Estacion:
+							<span> {flag.node.station.name}</span>
+						</h6>
+						<h6 className='detail__name'>
+							Town:
+							<span>{flag.node.station.town}</span>
+						</h6>
+						<h6 className='detail__name'>
+							Fuel Type:
+							<span>{flag.node.gasType}</span>
+						</h6>
+						<h6 className='detail__name'>
+							Price:
+							<span>${flag.node.price}</span>
+						</h6>
+					</div>
+				</InfoWindow>
+			) : null}
 		</GoogleMap>
 	);
 };

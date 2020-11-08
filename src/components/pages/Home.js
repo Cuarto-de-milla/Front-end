@@ -77,7 +77,7 @@ const Home = () => {
 					<li className='list__item'>
 						<input
 							type='text'
-							placeholder='Estacion'
+							placeholder='Estado'
 							className='list__item-input'
 							name='station'
 							value={filters.station}
