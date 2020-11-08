@@ -1,38 +1,67 @@
 import React, { useState } from 'react';
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
-import login from '../../graphql/mutations/login'
+import login from '../../graphql/mutations/login';
 import '../../sass/components/organisms/FormLogin.scss';
 
 const FormLogin = () => {
 	const [form, setForm] = useState({});
-	const [
-		loginMutation
-	  ] = useMutation(login, {
-		  onCompleted(data) {
+	const [loginMutation] = useMutation(login, {
+		onCompleted(data) {
 			localStorage.setItem('token', data.tokenAuth.token);
-			window.location.replace('/')
-		  },
-		  onError(error) {
-			alert(error.message)
-		  }
-	  });
+			window.location.replace('/');
+		},
+		onError(error) {
+			Swal.fire({
+				title: `<h4 style="color:  #ffffff">${error.message}</h4>`,
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
+		},
+	});
 
-	const handleChange = ({ target }) => setForm({
-		...form,
-		[target.name]: target.value
-	})
+	const handleChange = ({ target }) =>
+		setForm({
+			...form,
+			[target.name]: target.value,
+		});
 
 	const handleLogIn = () => {
-		if (!form.username) return alert('You need to provide an username')
-		if (!form.password) return alert('You need to provide a passwors')
+		if (!form.username)
+			return Swal.fire({
+				title:
+					'<h4 style="color : #ffffff">You need to provide an username</h4>',
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
+		if (!form.password)
+			return Swal.fire({
+				title:
+					'<h4 style="color : #ffffff">You need to provide a passwors</h4>',
+				background: '#001830',
+				timer: 20000,
+				timerProgressBar: true,
+				width: '320px',
+				footer:
+					'<h4 style="color: #db0a40">Cuartodemilla.com</h4>',
+				padding: '5% 10px 20px',
+			});
 		loginMutation({
 			variables: form,
-			
-		})
-
-	}
-
+		});
+	};
 
 	return (
 		<div className='form'>
@@ -42,7 +71,10 @@ const FormLogin = () => {
 				className='form__image'
 			/>
 			<div className='form__entries'>
-				<label htmlFor='username' className='form__entries-label'>
+				<label
+					htmlFor='username'
+					className='form__entries-label'
+				>
 					* username
 				</label>
 				<input
@@ -84,7 +116,15 @@ const FormLogin = () => {
 						color: '#001830',
 					}}
 				>
-					Crear Cuenta
+					<Link to='/register'>
+						<span
+							style={{
+								color: '#001830',
+							}}
+						>
+							Crear Cuenta
+						</span>
+					</Link>
 				</button>
 			</div>
 		</div>
