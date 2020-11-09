@@ -1,20 +1,15 @@
 import React from 'react';
 import '../../sass/components/organisms/ReportCard.scss';
 
-const ReportCard = () => {
+const ReportCard = ({ text, name, date }) => {
+
 	return (
 		<div className='cardReport'>
 			<div className='cardReport__head'>
-				<h6 className='cardReport__head-name'>
-					Alexander Mandraque
-				</h6>
-				<h6 className='cardReport__head-date'>01/10/2020</h6>
+				<h6 className='cardReport__head-name'>{name}</h6>
+				<h6 className='cardReport__head-date'>{date}</h6>
 			</div>
-			<p className='cardReport__text'>
-				Lorem ipsum dolor sit amet, consectetur adipisicing
-				elit. Doloremque, impedit! Ad recusandae sint explicabo
-				fugit!
-			</p>
+			<p className='cardReport__text'>{text}</p>
 		</div>
 	);
 };

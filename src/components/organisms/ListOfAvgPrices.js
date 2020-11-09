@@ -1,7 +1,25 @@
 import React from 'react';
 
 const ListOfAvgPrices = () => {
-	return [1, 2, 3].map((item, index) => (
+	const data = [
+		{
+			type: 'Diesel',
+			date: '09/11/2020',
+			price: '$ 18.79',
+		},
+		{
+			type: 'Premium',
+			date: '09/11/2020',
+			price: '$ 19.19',
+		},
+		{
+			type: 'Regular',
+			date: '09/11/2020',
+			price: '$ 18.15',
+		},
+	];
+
+	return data.map((item, index) => (
 		<li className='avgPrices__list-item' key={index}>
 			<div className='head'>
 				<h4 className='title'>
