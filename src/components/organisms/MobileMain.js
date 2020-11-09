@@ -13,7 +13,7 @@ const MobileMain = (props) => {
 				<NavLink to='/home' activeClassName='selected'>
 					HOME
 				</NavLink>
-				<NavLink to='/report' activeClassName='selected'>
+				<NavLink to='/result' activeClassName='selected'>
 					CREAR REPORTE
 				</NavLink>
 				<NavLink to='/login' activeClassName='selected'>

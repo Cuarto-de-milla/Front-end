@@ -38,7 +38,7 @@ const Layout = (props) => {
 
 		return (
 			<nav className='header__nav'>
-				<NavLink activeClassName='selected' to='/report'>
+				<NavLink activeClassName='selected' to='/result'>
 					CREAR REPORTE
 				</NavLink>
 				{ !localStorage.getItem('token') && <NavLink activeClassName='selected' to='/login'>
