@@ -1,0 +1,22 @@
+@import '../../common/Variables.scss';
+
+.cardReport {
+  border: 1px solid $primary-color;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 3px;
+
+	&__head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+    height: 30px;
+    padding: 5px;
+    border-bottom: 1px solid $primary-color;
+	}
+
+	&__text {
+    font-size: 14px;
+    padding: 10px;
+	}
+}
